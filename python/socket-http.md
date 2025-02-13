@@ -234,9 +234,6 @@ fazer_requisicao_get()
 
 ### 3. Experimento 2
 
-```markdown
-# Análise do Experimento 1
-
 ## 1. Executar o servidor HTTP sem thread (Subseção 2.1)
 
 No código, o servidor é configurado e o método `serve_forever()` do `HTTPServer` é invocado, o que mantém o servidor ativo para receber e processar requisições de forma síncrona, ou seja, uma requisição de cada vez.
