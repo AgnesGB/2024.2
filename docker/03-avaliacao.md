@@ -21,11 +21,31 @@
 
 ### Aluno
 
-- nome: 
-- matrícula: 
+- nome: Agnes G Barbosa
+- matrícula: 20232014040023
 
 ### Relato
+Fiz a integração no meu projeto do PDS: Arkheion.
+Primeiro de tudo trouxe o arquivo ```requirements.txt``` para o diretório do mysite, o projeto.
+Depois, criei o arquivo ```Dockerfile``` e o ```docker-compose.yml```. Testamos se rodou, não rodou. Estava dando erro ao copiar o ```requirements.txt```. Como eu não sabia exatamente o que era necessário manter para rodar a aplicação e o arquivo tinha cerca de 600~700 linhas, perguntei ao Deepseek quais eu deveria manter e ele limpou, deixando apenas os principais.
+Logo em seguida, dei o comando ```docker-composer up --build``` pra iniciar e buildar o docker, usando o comando descrito no arquivo ```docker-composer.yml```: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000" para abrir o servidor e realizar as migrações dos models para o banco.
 
 ### Arquivos docker e de configuração do django
+
+## Dockerfile
+FROM python:3.12
+WORKDIR /mysite
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+COPY . .
+
+## docker-compose.yml
+services:
+    app:
+        build: .
+        container_name: arkheion
+        command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+        ports: 
+            - "8000:8000"
 
 **observação** coloque nomes nos arquivos antes do códigos-fonte.
